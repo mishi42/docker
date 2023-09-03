@@ -1,0 +1,25 @@
+version: "3.7"
+
+services:
+  rstudio:
+    image: directional_statistics_gpu:latest
+    build :
+      context: .
+      dockerfile: ./dockerfile/rstudio.dockerfile    
+    container_name: rstudio_direct
+    environment:
+      - USERNAME=rstudio
+      - PASSWORD=rstudio1234
+      - TZ=Asia/Tokyo
+      - root=TRUE
+    ports:
+      - 2233:8787
+      # - 6677:6070
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [gpu]
+    working_dir: /work
+    tty: true
+    restart: always
