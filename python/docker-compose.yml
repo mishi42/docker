@@ -29,8 +29,6 @@ services:
     build:
         context: .
         dockerfile: tensorboard.dockerfile
-    volumes: 
-      - C:\Users\debre\Documents\work\:/work/mnt/
     working_dir: /work/
     ports:
         - 6006:6006
