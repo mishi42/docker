@@ -38,45 +38,25 @@ WORKDIR /work/env/
 RUN sudo ./ins_app_dir.sh
 # Bayes
 RUN sudo ./ins_bayes.sh
-#torch
-RUN sudo ./ins_torch.sh
 #geo science
 RUN sudo ./ins_geo_sp.sh
 #for writing papers
 RUN sudo ./ins_doc.sh
-#for writing papers
+#for tidy
 RUN sudo ./ins_tidy_gg.sh
-#spark
-RUN ./ins_spark.sh
-# marketing
-RUN ./ins_marke.sh
 
 #GPU
 RUN install2.r --error --skipmissing --skipinstalled drat OpenCL
 RUN R -q -e 'drat::addRepo("daqana"); install.packages("RcppArrayFire")'
 
-# data cleaning
 RUN install2.r --error --skipmissing --skipinstalled validate errorlocate simputation Amelia rspa lumberjack docopt dcmodify mice 
-# iryo
 RUN install2.r --error --skipmissing --skipinstalled gtsummary MatchIt corrplot ggcorrplot ggdag meta netmeta survminer ggfortify Meth nanir visdat Rtsne ggtree ggtreeExtra TDA
 RUN R -q -e 'devtools::install_github("xrobin/pROC")'
-#network
-#RUN install2.r --error --skipmissing --skipinstalled \
-#           igraph ggraph graphframes spNetwork sfnetworks networkD3 visNetwork circlize HiveR sna ergm ggnetwork statnet qgraph
-#RUN R -q -e 'devtools::install_github("gastonstat/arcdiagram")'
-
-#Bio
-#RUN install2.r BiocManager
-#RUN R -q -e 'BiocManager::install("WGCNA")'
-
-#personal
 RUN install2.r --error --skipmissing --skipinstalled \
            CausalImpact xts modelsummary ComplexHeatmap caret ranger glmnet rBaysianOptimization gridExtra RODBC odbc xgboost lightgbm skimr progress stringi excel.link XLConnect \
            FactoMineR factoextra PMCMRplus agricolae missMDA partykit rpart.plot igraph maps animation ineq lmtest tictoc patchwork tsibble zoo xts forecast naniar pacman estimatr 
 
-#RUN R -q -e 'remotes::install_github("https://github.com/pola-rs/r-polars",ref = "long_arms64", force =TRUE)'
 RUN R -q -e 'install.packages("https://github.com/pola-rs/r-polars/releases/latest/download/polars__x86_64-pc-linux-gnu.gz",repos = NULL)'
-
 
 RUN mkdir /work/xgb
 WORKDIR /work/xgb
@@ -84,15 +64,6 @@ WORKDIR /work/xgb
 #xgboost gpu
 RUN wget https://s3-us-west-2.amazonaws.com/xgboost-nightly-builds/release_1.7.0/xgboost_r_gpu_linux_21d95f3d8f23873a76f8afaad0fee5fa3e00eafe.tar.gz -O xgboost_r_gpu_linux.tar.gz
 RUN R CMD INSTALL ./xgboost_r_gpu_linux.tar.gz
-
-#lightgbm gpu
-#RUN git clone --recursive https://github.com/microsoft/LightGBM && \
-#    cd LightGBM && \
-#    Rscript build_r.R \
-#    --use-gpu \
-#    --opencl-library=/usr/lib/x86_64-linux-gnu/libOpenCL.so \
-#    --boost-librarydir=/usr/lib/x86_64-linux-gnu
-
 
 #catdap2ext
 RUN mkdir /work/catdap
@@ -102,7 +73,7 @@ RUN install2.r --error --skipmissing --skipinstalled catdap && \
     curl -OL https://jasp.ism.ac.jp/ism/catdap2ext/catdap2ext_0.2.0.zip && \
     R -q -e 'install.packages("catdap2ext_0.2.0.tar.gz")'
 
-#kato pgm
+
 RUN mkdir /work/ref_kato/
 WORKDIR /work/ref_kato/
 
@@ -119,4 +90,3 @@ WORKDIR /work/data/
 #衛星
 #RUN curl -OL https://www.gsi.go.jp/geowww/globalmap-gsi/download/data/gm-japan/gm-jpn-all_u_2_2.zip
 #RUN unzip gm-jpn-all_u_2_2.zip
-
