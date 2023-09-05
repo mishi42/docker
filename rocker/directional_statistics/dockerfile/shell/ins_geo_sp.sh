@@ -6,6 +6,8 @@ install2.r --error --skipmissing --skipinstalled \
           GRTo stratigrapheR SDAR coreCT G2sd EMMAgeo DecomposeR RockFab smwrData rgdal 
           #TauP.R
 
+R -q -e 'install.packages("rnaturalearthhires", repos = "https://ropensci.r-universe.dev", type = "source")'
+
 R -q -e 'devtools::install_github("tylermorganwall/rayshader")'
 R -q -e 'devtools::install_github("ActiveMargins/stRatstat")'
 R -q -e 'devtools::install_github("oscarperpinan/rasterVis")'
@@ -31,9 +33,9 @@ install2.r --error --skipmissing --skipinstalled tidync ncdf4 RNetCDF
 install2.r --error --skipmissing --skipinstalled scgwr spmoran
 
 #uryu
-install2.r --error --skipmissing --skipinstalled jpmesh zipangu kuniezu
-R -q -e 'remotes::install_gitlab("uribo/jmastats")'
+install2.r --error --skipmissing --skipinstalled jpmesh zipangu kuniezu fgdr
+#R -q -e 'remotes::install_gitlab("uribo/jmastats")'
+R -q -e 'install.packages("jmastats", repos = c(mm = "https://uribo.r-universe.dev", getOption("repos")))'
 R -q -e 'remotes::install_github("uribo/kuniezu")'
 R -q -e 'devtools::install_github("uribo/jpndistrict")'
 R -q -e 'devtools::install_github("uribo/lab.note")'
-
