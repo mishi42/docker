@@ -19,14 +19,14 @@ RUN pip install torch torchvision torchaudio torch_tb_profiler && \
     pip install torch-scatter torch-sparse torch-geometric gym
 
 #
-#RUN pip install tensorboard tensorflow onnxruntime-gpu skl2onnx
+RUN pip install tensorboard tensorflow onnxruntime-gpu skl2onnx
 
 #XAI
 RUN pip install shap lime eli5 skater pydotplus graphviz skope-rules interpret-core xgboost catboost lightgbm witwidget alibi
 
 #personal
 RUN pip install scipy statsmodels polars optuna missingno pyarrow imbalanced-learn mlxtend boto3 s3fs xlrd xlwt \ 
-                msoffcrypto-tool openpyxl seaborn 
+                msoffcrypto-tool openpyxl seaborn google-cloud-bigquery beautifulsoup4 selenium
 
 #bayes
 RUN pip install numpyro[cuda] -f https://storage.googleapis.com/jax-releases/jax_cuda_releases.html
@@ -74,7 +74,7 @@ RUN git clone --depth 1 https://github.com/neologd/mecab-ipadic-neologd.git && \
 
 
 #GIS
-RUN pip install geopandas pyrosm shapely pysal  geojson contextily mplleaflet osmnx pygeos fiona sentinelsat
+RUN pip install geopandas pyrosm shapely pysal geojson contextily mplleaflet osmnx pygeos fiona sentinelsat
 
 # geocoding apply patch
 RUN git clone https://github.com/hottolink/pydams.git \
