@@ -1,0 +1,28 @@
+version: "3.7"
+
+services:
+  rstudio:
+    image: rocker_marketing:v0.1
+    build :
+      context: .
+      dockerfile: ./rstudio.dockerfile
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [gpu]
+    container_name: rstudio_marketing
+    environment:
+      - USERNAME=rstudio
+      - PASSWORD=rstudio1234
+      - TZ=Asia/Tokyo
+    ports:
+      - 5454:8787
+    #volumes:
+    #  -
+    working_dir: /work
+    tty: true
+    restart: always
+
+
+    
