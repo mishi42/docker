@@ -1,0 +1,15 @@
+version: '3'
+services:
+    jupyterhub:
+        image: jupyterhub
+        build:
+            context: .
+            dockerfile: jupyterhub.dockerfile
+        ports:
+            - 8000:8000
+        command:
+            bash -c "find /home -exec chmod 777 {} + && jupyterhub --Spawner.notebook_dir='/mnt'"
+        restart: always
+        tty: true
+        working_dir : /work
+        
