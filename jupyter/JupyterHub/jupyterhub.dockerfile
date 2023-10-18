@@ -73,15 +73,6 @@ RUN pip install --ignore-installed japanize-matplotlib && \
 # geocoding apply patch
 
 # optimization
-#macab
-RUN python -c "import nltk; nltk.download('omw-1.4');"
-RUN apt update -y && apt upgrade -y && \
-    apt install -y mecab libmecab-dev mecab-ipadic && \
-    apt install -y mecab-ipadic-utf8 && \
-    apt install -y libc6-dev build-essential && \
-    git clone --depth 1 https://github.com/neologd/mecab-ipadic-neologd.git && \
-    pip install mecab-python3 && \
-    pip install unidic-lite
 
 # text
 RUN pip install --ignore-installed fugashi && \
@@ -95,7 +86,18 @@ RUN pip install --ignore-installed fugashi && \
     pip install --ignore-installed pyLDAvis && \
     pip install --ignore-installed scattertext && \
     pip install --ignore-installed ginza && \
-    pip install --ignore-installed nlpaug
+    pip install --ignore-installed nlpaug && \
+    pip install --ignore-installed nlpaug nltk
+    
+#macab
+RUN python -c "import nltk; nltk.download('omw-1.4');"
+RUN apt update -y && apt upgrade -y && \
+    apt install -y mecab libmecab-dev mecab-ipadic && \
+    apt install -y mecab-ipadic-utf8 && \
+    apt install -y libc6-dev build-essential && \
+    git clone --depth 1 https://github.com/neologd/mecab-ipadic-neologd.git && \
+    pip install mecab-python3 && \
+    pip install unidic-lite
 
 
 #Jupyterlab extensions
