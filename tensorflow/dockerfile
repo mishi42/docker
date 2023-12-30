@@ -1,4 +1,4 @@
-FROM tensorflow/tensorflow:2.10.1-gpu-jupyter 
+FROM tensorflow/tensorflow:2.13.0-gpu-jupyter 
 # pyhon3.8
 
 WORKDIR /
@@ -6,9 +6,8 @@ RUN mkdir /work
 WORKDIR /work
 
 RUN pip install -U pip && \
-    pip install --ignore-installed \
+    pip install \
         japanize-matplotlib lckr-jupyterlab-variableinspector jupyterlab_nvdashboard
 
-
-RUN pip install --ignore-installed \
-        scikit-learn tfx tfx-addons tensorflow-probability xgboost
+RUN pip install \
+        scikit-learn tfx tfx-addons tensorflow-probability tensorflow-model-analysis witwidget xgboost 
