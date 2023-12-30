@@ -1,0 +1,11 @@
+FROM tensorflow/tensorflow:2.10.1-gpu-jupyter 
+# pyhon3.8
+
+WORKDIR /
+RUN mkdir /work
+WORKDIR /work
+
+RUN pip install -U pip && \
+    pip install --ignore-installed \
+        scikit-learn japanize-matplotlib lckr-jupyterlab-variableinspector jupyterlab_nvdashboard tfx tfx-addons \
+        xgboost
