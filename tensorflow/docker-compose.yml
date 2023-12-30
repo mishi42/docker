@@ -1,0 +1,27 @@
+version: '3.7'
+services:
+  jupyter:
+    image : jupyter_tf:gpu
+    container_name: tf_gpu
+    build :
+      context: .
+      dockerfile: ./dockerfile
+    ports:
+      - "7766:7766"
+      - "6006:6006"
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [gpu]
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+      - TZ=Asia/Tokyo
+      - root=TRUE
+    tty: true 
+    restart : always
+    
+    command: "jupyter lab --port 7766 --ip=0.0.0.0 --allow-root --LabApp.token=''"
+
+
+  
