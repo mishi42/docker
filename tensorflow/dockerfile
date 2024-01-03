@@ -12,4 +12,5 @@ RUN pip install -U pip && \
 RUN pip install \
         scikit-learn tfx tfx-addons tensorflow-probability tensorflow-model-analysis witwidget xgboost
 
-RUN pip install "dask[complete]"
+RUN pip install "dask[complete]" "dask_labextension<5"
+
