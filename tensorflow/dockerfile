@@ -10,4 +10,6 @@ RUN pip install -U pip && \
         japanize-matplotlib lckr-jupyterlab-variableinspector jupyterlab_nvdashboard
 
 RUN pip install \
-        scikit-learn tfx tfx-addons tensorflow-probability tensorflow-model-analysis witwidget xgboost 
+        scikit-learn tfx tfx-addons tensorflow-probability tensorflow-model-analysis witwidget xgboost
+
+RUN pip install "dask[complete]"
