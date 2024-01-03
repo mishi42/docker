@@ -7,10 +7,10 @@ WORKDIR /work
 
 RUN pip install -U pip && \
     pip install \
-        japanize-matplotlib lckr-jupyterlab-variableinspector jupyterlab_nvdashboard
+        japanize-matplotlib lckr-jupyterlab-variableinspector jupyterlab_nvdashboard graphviz
 
 RUN pip install \
-        scikit-learn tfx tfx-addons tensorflow-probability tensorflow-model-analysis witwidget xgboost
+        scikit-learn tfx tfx-addons tensorflow-probability tensorflow-model-analysis witwidget xgboost 
 
-RUN pip install "dask[complete]" "dask_labextension<5"
+RUN pip install "arviz[all]" "dask_labextension<5"
 
