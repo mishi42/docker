@@ -7,10 +7,13 @@ WORKDIR /work
 
 RUN pip install -U pip && \
     pip install \
-        japanize-matplotlib lckr-jupyterlab-variableinspector jupyterlab_nvdashboard graphviz
+        jupyterlab japanize-matplotlib lckr-jupyterlab-variableinspector jupyterlab_nvdashboard
 
 RUN pip install \
-        scikit-learn tfx tfx-addons tensorflow-probability tensorflow-model-analysis witwidget xgboost 
+        scikit-learn tfx tfx-addons tensorflow-probability tensorflow-model-analysis tensorflow_decision_forests \
+        witwidget xgboost seaborn statsmodels arviz numpyro scipy
 
-RUN pip install "arviz[all]" "dask_labextension<5"
+RUN pip install \
+        dask-cuda dask-labextension==6.2.0 bokeh==2.4.2
 
+RUN pip install --upgrade "jax[cuda11_pip]" -f https://storage.googleapis.com/jax-releases/jax_cuda_releases.html
